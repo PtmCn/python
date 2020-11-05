@@ -1,28 +1,42 @@
 import turtle
-gap = 10
+import math
+
 side = int (input('How many sides:'))
-sidelength = int(input('How long is each side:'))
-row = int (input('How many rows:'))
-#column =int  (input('How many columns:'))
-"""
-for x in range(row):
-  for x in range(column):
-    print ('* ', end = '')
-  print ('\n')  
-"""
-turtle.goto(0,0)
-for x in range(row):
-  turtle.forward(sidelength) # draw base
+sidelength = int (input('How long is each side:'))
+column = int (input('How many columns:'))
+row =int  (input('How many rows:'))
 
-  turtle.left((180/side)*(side-1))
-  turtle.forward(sidelength)
+def find_xmax():
+  k = 0
+  if turtle.xcor() > k: 
+    k = turtle.xcor()
+  return k
 
-  turtle.left((180/side)*(side-1))
+def draw_shape():
   turtle.forward(sidelength)
+  for x in range(side-1):
+    turtle.left(360/side)
+    turtle.forward(sidelength)
+    find_xmax()
+
+ystart=0
+height = 10 #math.radians(30)*sidelength
+gap = 10
+for x in range(column):
+  xstart =  0
+  ystart = ystart - height - gap
+  for x in range(row):
+    turtle.pu()
+    turtle.left(360/side)
+    turtle.goto(xstart,ystart)
+    turtle.pd()  
+
+    draw_shape()
+
+    xstart = xstart + xmax + gap
 
   turtle.pu()
-  turtle.left((180/side)*(side-1))
-  turtle.forward(sidelength+gap)  
+  turtle.goto(0,ystart)
   turtle.pd()
 
 turtle.done()
