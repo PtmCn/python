@@ -14,14 +14,14 @@ turtle.goto(0,0)
 for x in range(row):
   turtle.forward(sidelength) # draw base
 
-  turtle.left(180-(180/side))
+  turtle.left((180/side)*(side-1))
   turtle.forward(sidelength)
 
-  turtle.left(180 - (180 / side))
+  turtle.left((180/side)*(side-1))
   turtle.forward(sidelength)
 
   turtle.pu()
-  turtle.left(180-(180/side))
+  turtle.left((180/side)*(side-1))
   turtle.forward(sidelength+gap)  
   turtle.pd()
 
